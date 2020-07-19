@@ -1,7 +1,7 @@
 package guru.springframework.sfgpetclinic.services.map;
 
 import guru.springframework.sfgpetclinic.model.Vet;
-import guru.springframework.sfgpetclinic.services.CrudService;
+import guru.springframework.sfgpetclinic.services.VetService;
 
 import java.util.Set;
 
@@ -9,12 +9,13 @@ import java.util.Set;
  * Created by Ken Butters on 3/21/2020
  */
 
-public class VetServiceMap extends AbstractMapService<Vet,Long> implements CrudService<Vet,Long> {
+public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService {
 
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
     }
+
 
     @Override
     public Vet findByID(Long id) {
@@ -23,7 +24,7 @@ public class VetServiceMap extends AbstractMapService<Vet,Long> implements CrudS
 
     @Override
     public Vet save(Vet vet) {
-        return null;
+        return super.save(vet.getId(),vet);
     }
 
     @Override
@@ -35,4 +36,10 @@ public class VetServiceMap extends AbstractMapService<Vet,Long> implements CrudS
     public void deleteById(Long id) {
         super.deleteById(id);
     }
+
+    @Override
+    public Vet findByLastName(String lastName) {
+        return null;
+    }
+
 }
